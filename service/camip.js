@@ -34,6 +34,9 @@ class CameraIPService {
     }
     async turnOnStrean({ streamUrl }) {
         console.log(streamUrl);
+        if (this.stream) {
+            this.stream.stop();
+        }
         this.stream = new Stream({
             name: 'ViConIPCAM',
             streamUrl,
@@ -45,7 +48,10 @@ class CameraIPService {
         });
     }
     async turnOffStrean() {
-        this.stream.stop();
+        if (this.stream) {
+            this.stream.stop();
+        }
+        return true;
     }
 }
 

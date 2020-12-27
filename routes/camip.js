@@ -11,6 +11,7 @@ function cameraipAPI(app) {
     });
     router.post('/on', async (req, res, next) => {
         const { body: camera } = req;
+        console.log(camera);
         try {
             const { streamUrl, camInfo } = await cameraIPService.getStreamUrl({ camera });
             cameraIPService.turnOnStrean({ streamUrl });
@@ -18,13 +19,14 @@ function cameraipAPI(app) {
                 camera: camInfo,
                 message: 'Camera enabled',
             });
+            console.log(`Camera: ${camInfo.Manufacturer}`);
         } catch (error) {
             next(error);
         }
     });
     router.post('/off', async (req, res, next) => {
         try {
-            const { turnOffCamera } = await cameraIPService.turnOffStrean();
+            const turnOffCamera = await cameraIPService.turnOffStrean();
             res.status(200).json({
                 camera: turnOffCamera,
                 message: 'Camera disabled',
