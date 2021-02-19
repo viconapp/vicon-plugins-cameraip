@@ -32,7 +32,7 @@ class CameraIPService {
                 });
         });
     }
-    async turnOnStrean({ streamUrl }) {
+    async turnOnStream({ streamUrl }) {
         console.log(streamUrl);
         if (this.stream) {
             this.stream.stop();

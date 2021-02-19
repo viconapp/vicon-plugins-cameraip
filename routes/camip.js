@@ -14,7 +14,7 @@ function cameraipAPI(app) {
         console.log(camera);
         try {
             const { streamUrl, camInfo } = await cameraIPService.getStreamUrl({ camera });
-            cameraIPService.turnOnStrean({ streamUrl });
+            cameraIPService.turnOnStream({ streamUrl });
             res.status(200).json({
                 camera: camInfo,
                 message: 'Camera enabled',
