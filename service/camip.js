@@ -36,13 +36,20 @@ class CameraIPService {
         if (this.stream) {
             this.stream.stop();
         }
+        console.log(`URLCAM: ${streamUrl}`);
         this.stream = new Stream({
             name: 'ViConIPCAM',
             streamUrl,
             wsPort: config.wsPort,
+            width: 1280,
+            height: 720,
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
+                '-c:v': 'libx264',
+                '-vf': 'scale=1280:720',
+                '-analyzeduration': '100M',
+                '-probesize': '100M',
             },
         });
     }
