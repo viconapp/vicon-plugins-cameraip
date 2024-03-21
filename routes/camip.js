@@ -20,6 +20,7 @@ function cameraipAPI(app) {
                 message: 'Camera enabled',
             });
             console.log(`Camera: ${camInfo.Manufacturer}`);
+            console.log(`URL STREAM: ${streamUrl}`);
         } catch (error) {
             next(error);
         }
