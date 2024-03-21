@@ -44,6 +44,8 @@ class CameraIPService {
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
+                '-c:v': 'libx264',
+                '-vf': 'scale=1280:720',
             },
         });
     }
