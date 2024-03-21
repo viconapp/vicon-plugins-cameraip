@@ -45,7 +45,6 @@ class CameraIPService {
                 '-r': 30,
             },
         });
-        console.log(`URL: ${this.stream.getStreamUrl()}`);
     }
     async turnOffStrean() {
         if (this.stream) {
