@@ -11,16 +11,15 @@ function cameraipAPI(app) {
     });
     router.post('/on', async (req, res, next) => {
         const { body: camera } = req;
-        console.log(camera);
         try {
             const { streamUrl, camInfo } = await cameraIPService.getStreamUrl({ camera });
             cameraIPService.turnOnStream({ streamUrl });
+            console.log(`Camera: ${camInfo.Manufacturer}`);
+            console.log(`URL STREAM: ${streamUrl}`);
             res.status(200).json({
                 camera: camInfo,
                 message: 'Camera enabled',
             });
-            console.log(`Camera: ${camInfo.Manufacturer}`);
-            console.log(`URL STREAM: ${streamUrl}`);
         } catch (error) {
             next(error);
         }
