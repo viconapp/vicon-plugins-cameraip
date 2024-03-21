@@ -43,10 +43,6 @@ class CameraIPService {
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
-                '-c:v': 'libx264',
-                '-vf': 'scale=1280:720',
-                '-analyzeduration': '500M',
-                '-probesize': '500M',
             },
         });
         console.log(`URL: ${this.stream.getStreamUrl()}`);
