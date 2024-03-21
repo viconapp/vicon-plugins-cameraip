@@ -49,6 +49,7 @@ class CameraIPService {
                 '-probesize': '100M',
             },
         });
+        console.log(`URL: ${this.stream.getStreamUrl()}`);
     }
     async turnOffStrean() {
         if (this.stream) {
