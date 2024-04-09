@@ -33,24 +33,21 @@ class CameraIPService {
                 });
         });
     }
-    async turnOnStream({ streamUrl }) {
+    async turnOnStream({ streamUrl, camInfo }) {
         if (this.stream) {
             this.stream.stop();
         }
         console.log(`URLCAM: ${streamUrl}`);
+        const urlN = streamUrl.split('?');
+        console.log(camInfo);
         try {
             this.stream = new Stream({
                 name: 'ViConIpCam',
-                streamUrl: streamUrl,
+                streamUrl: urlN[0],
                 wsPort: config.wsPort,
                 ffmpegOptions: {
                     '-stats': '',
-                    '-r': 24,
-                    '-vf': 'scale=1280:720',
-                    '-analyzeduration': '100M',
-                    '-probesize': '100M',
-                    '-c:v': 'libx265',
-                    '-pix_fmt': 'yuv420p',
+                    '-r': 30,
                 },
             });
         } catch (error) {
