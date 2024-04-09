@@ -41,15 +41,9 @@ class CameraIPService {
             name: 'ViConIPCAM',
             streamUrl,
             wsPort: config.wsPort,
-            width: 1280,
-            height: 720,
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
-                '-c:v': 'libx264',
-                '-vf': 'scale=1280:720',
-                '-analyzeduration': '100M',
-                '-probesize': '5000000',
             },
         });
     }
@@ -61,8 +55,6 @@ class CameraIPService {
             name: 'ViConIPCAM',
             streamUrl: '',
             wsPort: config.wsPort,
-            width: 1280,
-            height: 720,
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
