@@ -25,9 +25,9 @@ class CameraIPService {
                     const streamUrlOutUser = await onvifDevice.getUdpStreamUrl();
                     const url = streamUrlOutUser.split('//');
                     const streamUrl = `${url[0]}//${user}:${pass}@${url[1]}`;
-                    const profiles = await device.getProfiles();
+                    const profiles = await onvifDevice.getProfiles();
                     const subStreamProfile = profiles.find((profile) => profile.Name === 'Sub Stream');
-                    const streamUrlSubStream = subStreamProfile?.RTSPStreamURI;
+                    const streamUrlSubStream = subStreamProfile.RTSPStreamURI;
                     if (!streamUrl) {
                         console.log('No se encontró la URL de transmisión del subflujo.');
                     }
