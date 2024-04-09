@@ -1,5 +1,7 @@
 const onvif = require('node-onvif');
-const Stream = require('node-rtsp-stream');
+// const Stream = require('node-rtsp-stream');
+const Stream = require('node-rtsp-stream-jsmpeg');
+
 const { config } = require('../config');
 const boom = require('@hapi/boom');
 
