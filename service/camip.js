@@ -39,7 +39,7 @@ class CameraIPService {
         console.log(`URLCAM: ${streamUrl}`);
         this.stream = new Stream({
             name: 'ViConIPCAM',
-            streamUrl,
+            streamUrl: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
             wsPort: config.wsPort,
             ffmpegOptions: {
                 '-stats': '',
@@ -53,7 +53,7 @@ class CameraIPService {
         }
         this.stream = new Stream({
             name: 'ViConIPCAM',
-            streamUrl: '',
+            streamUrl: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
             wsPort: config.wsPort,
             ffmpegOptions: {
                 '-stats': '',
