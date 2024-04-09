@@ -1,6 +1,5 @@
 const onvif = require('node-onvif');
-// const Stream = require('node-rtsp-stream');
-const Stream = require('node-rtsp-stream-jsmpeg');
+const Stream = require('node-rtsp-stream');
 
 const { config } = require('../config');
 const boom = require('@hapi/boom');
@@ -43,6 +42,11 @@ class CameraIPService {
             name: 'ViConIPCAM',
             streamUrl,
             wsPort: config.wsPort,
+            ffmpegOptions: {
+                '-stats': '',
+                '-r': 30, // Velocidad de fotogramas (FPS)
+                '-c:v': 'libx264', // Codificación de vídeo (H.264)
+            },
         });
     }
     async turnOnStreamTest() {
