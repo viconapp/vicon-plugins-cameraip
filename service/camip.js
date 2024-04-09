@@ -43,15 +43,7 @@ class CameraIPService {
             wsPort: config.wsPort,
             ffmpegOptions: {
                 '-stats': '',
-                '-r': 30, // Velocidad de fotogramas (FPS)
-                '-c:v': 'libx264', // Codificación de vídeo (H.264)
-                '-vf': 'scale=1280:720', // Escalar a una resolución compatible
-                '-b:v': '6144k', // Velocidad máxima de bits
-                '-maxrate': '6144k', // Tasa de bits máxima
-                '-bufsize': '6144k', // Tamaño del búfer
-                '-g': '50', // Intervalo de fotogramas clave (GOP)
-                '-analyzeduration': '100M',
-                '-probesize': '100M',
+                '-r': 30,
             },
         });
     }
