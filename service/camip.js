@@ -23,12 +23,8 @@ class CameraIPService {
                 .then(async function (info) {
                     const camInfo = info;
                     const streamUrlOutUser = await onvifDevice.getUdpStreamUrl();
-                    console.log(streamUrlOutUser);
                     const url = streamUrlOutUser.split('//');
-                    // const streamUrl = `${url[0]}//${user}:${pass}@${url[1]}`;
-                    const streamUrl = `${url[0]}//${user}:${pass}@172.40.0.123:554/Streaming/Channels/102?transportmode=unicast&profile=Profile_1`;
-                    let profile = onvifDevice.getCurrentProfile();
-                    console.log(JSON.stringify(profile, null, '  '));
+                    const streamUrl = `${url[0]}//${user}:${pass}@${url[1]}`;
                     resolve({ streamUrl, camInfo });
                 })
                 .catch((err) => {
@@ -50,6 +46,10 @@ class CameraIPService {
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
+                '-c:v': 'libx264',
+                '-vf': 'scale=1280:720',
+                '-analyzeduration': '100M',
+                '-probesize': '100M',
             },
         });
     }
