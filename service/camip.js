@@ -49,7 +49,7 @@ class CameraIPService {
                 '-c:v': 'libx264',
                 '-vf': 'scale=1280:720',
                 '-analyzeduration': '100M',
-                '-probesize': '100M',
+                '-probesize': '5000000',
             },
         });
     }
