@@ -44,9 +44,11 @@ class CameraIPService {
             wsPort: config.wsPort,
             ffmpegOptions: {
                 '-stats': '',
-                '-r': 30,
+                '-r': 24,
+                '-vf': 'scale=1280:720',
+                '-analyzeduration': '100M',
+                '-probesize': '100M',
             },
-            ffmpegPath: `/bin/ffmpeg`,
         });
     }
     async turnOnStreamTest() {
