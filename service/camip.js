@@ -38,18 +38,18 @@ class CameraIPService {
             this.stream.stop();
         }
         console.log(`URLCAM: ${streamUrl}`);
-        const urlN = streamUrl.split('&');
         console.log(camInfo);
         try {
             this.stream = new Stream({
                 name: 'ViConIpCam',
-                streamUrl: urlN[0],
+                streamUrl: streamUrl,
                 wsPort: config.wsPort,
                 ffmpegOptions: {
                     '-stats': '',
                     '-r': 30,
                 },
             });
+            console.log(this.stream);
         } catch (error) {
             console.log(error);
         }
