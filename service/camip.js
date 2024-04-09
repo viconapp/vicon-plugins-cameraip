@@ -39,17 +39,11 @@ class CameraIPService {
         console.log(`URLCAM: ${streamUrl}`);
         this.stream = new Stream({
             name: 'ViConIPCAM',
-            streamUrl,
+            streamUrl: './movie.mp4',
             wsPort: config.wsPort,
-            width: 1280,
-            height: 720,
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
-                '-c:v': 'libx264',
-                '-vf': 'scale=1280:720',
-                '-analyzeduration': '100M',
-                '-probesize': '5000000',
             },
         });
     }
@@ -59,10 +53,8 @@ class CameraIPService {
         }
         this.stream = new Stream({
             name: 'ViConIPCAM',
-            streamUrl: '',
+            streamUrl: './movie.mp4',
             wsPort: config.wsPort,
-            width: 1280,
-            height: 720,
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
