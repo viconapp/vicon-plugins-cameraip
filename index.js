@@ -7,8 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 //Routers
-const cameraipAPI = require('./routes/camip');
-cameraipAPI(app);
+const cameraIpAPI = require('./routes/camip');
+cameraIpAPI(app);
 
 app.listen(config.port, function () {
     // eslint-disable-next-line no-console

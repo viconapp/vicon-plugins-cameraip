@@ -1,6 +1,6 @@
 const express = require('express');
 const CameraIPService = require('../service/camip');
-function cameraipAPI(app) {
+function cameraIpAPI(app) {
     const router = express.Router();
     app.use('/api/cameraip', router);
     const cameraIPService = new CameraIPService();
@@ -22,6 +22,17 @@ function cameraipAPI(app) {
             next(error);
         }
     });
+    router.post('/test', async (req, res, next) => {
+        try {
+            cameraIPService.turnOnStreamTest();
+            res.status(200).json({
+                camera: 'camInfo',
+                message: 'Camera enabled',
+            });
+        } catch (error) {
+            next(error);
+        }
+    });
     router.post('/off', async (req, res, next) => {
         try {
             const turnOffCamera = await cameraIPService.turnOffStrean();
@@ -35,4 +46,4 @@ function cameraipAPI(app) {
     });
 }
 
-module.exports = cameraipAPI;
+module.exports = cameraIpAPI;

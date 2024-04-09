@@ -25,6 +25,13 @@ class CameraIPService {
                     const streamUrlOutUser = await onvifDevice.getUdpStreamUrl();
                     const url = streamUrlOutUser.split('//');
                     const streamUrl = `${url[0]}//${user}:${pass}@${url[1]}`;
+                    const profiles = await device.getProfiles();
+                    const subStreamProfile = profiles.find((profile) => profile.Name === 'Sub Stream');
+                    const streamUrlSubStream = subStreamProfile?.RTSPStreamURI;
+                    if (!streamUrl) {
+                        console.log('No se encontró la URL de transmisión del subflujo.');
+                    }
+                    console.log(streamUrlSubStream);
                     resolve({ streamUrl, camInfo });
                 })
                 .catch((err) => {
@@ -46,10 +53,22 @@ class CameraIPService {
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
-                '-c:v': 'libx264',
-                '-vf': 'scale=1280:720',
-                '-analyzeduration': '100M',
-                '-probesize': '100M',
+            },
+        });
+    }
+    async turnOnStreamTest() {
+        if (this.stream) {
+            this.stream.stop();
+        }
+        this.stream = new Stream({
+            name: 'ViConIPCAM',
+            streamUrl: '',
+            wsPort: config.wsPort,
+            width: 1280,
+            height: 720,
+            ffmpegOptions: {
+                '-stats': '',
+                '-r': 30,
             },
         });
     }
