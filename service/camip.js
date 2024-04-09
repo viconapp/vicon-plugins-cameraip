@@ -26,6 +26,8 @@ class CameraIPService {
                     console.log(streamUrlOutUser);
                     const url = streamUrlOutUser.split('//');
                     const streamUrl = `${url[0]}//${user}:${pass}@${url[1]}`;
+                    let profile = onvifDevice.getCurrentProfile();
+                    console.log(JSON.stringify(profile, null, '  '));
                     resolve({ streamUrl, camInfo });
                 })
                 .catch((err) => {
@@ -66,7 +68,7 @@ class CameraIPService {
             },
         });
     }
-    async turnOffStrean() {
+    async turnOffStream() {
         if (this.stream) {
             this.stream.stop();
         }

@@ -35,7 +35,7 @@ function cameraIpAPI(app) {
     });
     router.post('/off', async (req, res, next) => {
         try {
-            const turnOffCamera = await cameraIPService.turnOffStrean();
+            const turnOffCamera = await cameraIPService.turnOffStream();
             res.status(200).json({
                 camera: turnOffCamera,
                 message: 'Camera disabled',
