@@ -44,8 +44,10 @@ class CameraIPService {
             wsPort: config.wsPort,
             ffmpegOptions: {
                 '-stats': '',
-                '-r': 30, // Velocidad de fotogramas (FPS)
-                '-c:v': 'libx264', // Codificación de vídeo (H.264)
+                '-r': 30,
+                '-c:v': 'libx264',
+                '-analyzeduration': 0,
+                '-probesize': 5000000,
             },
         });
     }
