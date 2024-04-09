@@ -46,7 +46,7 @@ class CameraIPService {
                 '-stats': '',
                 '-r': 30,
             },
-            ffmpegPath: `${__dirname}/../../bin/ffmpeg`,
+            ffmpegPath: `/bin/ffmpeg`,
         });
     }
     async turnOnStreamTest() {
