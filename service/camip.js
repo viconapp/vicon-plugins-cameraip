@@ -49,6 +49,8 @@ class CameraIPService {
                     '-vf': 'scale=1280:720',
                     '-analyzeduration': '100M',
                     '-probesize': '100M',
+                    '-c:v': 'libx265',
+                    '-pix_fmt': 'yuv420p',
                 },
             });
         } catch (error) {
