@@ -38,7 +38,7 @@ class CameraIPService {
             this.stream.stop();
         }
         console.log(`URLCAM: ${streamUrl}`);
-        const urlN = streamUrl.split('?');
+        const urlN = streamUrl.split('&');
         console.log(camInfo);
         try {
             this.stream = new Stream({
