@@ -45,10 +45,8 @@ class CameraIPService {
             ffmpegOptions: {
                 '-stats': '',
                 '-r': 30,
-                '-c:v': 'libx264',
-                '-analyzeduration': '100M',
-                '-probesize': '100M',
             },
+            ffmpegPath: `${__dirname}/../../bin/ffmpeg`,
         });
     }
     async turnOnStreamTest() {
