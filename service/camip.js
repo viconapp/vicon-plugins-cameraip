@@ -38,18 +38,22 @@ class CameraIPService {
             this.stream.stop();
         }
         console.log(`URLCAM: ${streamUrl}`);
-        this.stream = new Stream({
-            name: 'ViConIPCAM',
-            streamUrl,
-            wsPort: config.wsPort,
-            ffmpegOptions: {
-                '-stats': '',
-                '-r': 24,
-                '-vf': 'scale=1280:720',
-                '-analyzeduration': '100M',
-                '-probesize': '100M',
-            },
-        });
+        try {
+            this.stream = new Stream({
+                name: 'ViConIPCAM',
+                streamUrl,
+                wsPort: config.wsPort,
+                ffmpegOptions: {
+                    '-stats': '',
+                    '-r': 24,
+                    '-vf': 'scale=1280:720',
+                    '-analyzeduration': '100M',
+                    '-probesize': '100M',
+                },
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
     async turnOnStreamTest() {
         if (this.stream) {
