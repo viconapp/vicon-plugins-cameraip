@@ -46,8 +46,8 @@ class CameraIPService {
                 '-stats': '',
                 '-r': 30,
                 '-c:v': 'libx264',
-                '-analyzeduration': 0,
-                '-probesize': 5000000,
+                '-analyzeduration': '100M',
+                '-probesize': '100M',
             },
         });
     }
