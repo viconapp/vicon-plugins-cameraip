@@ -43,10 +43,6 @@ class CameraIPService {
             name: 'ViConIPCAM',
             streamUrl,
             wsPort: config.wsPort,
-            ffmpegOptions: {
-                '-stats': '',
-                '-r': 30,
-            },
         });
     }
     async turnOnStreamTest() {
